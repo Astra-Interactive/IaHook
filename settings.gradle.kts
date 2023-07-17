@@ -1,9 +1,5 @@
 pluginManagement {
-    includeBuild("build-logic")
     repositories {
-        maven("https://maven.fabricmc.net/") { name = "Fabric" }
-        maven("https://files.minecraftforge.net/maven")
-        maven("https://dist.creeper.host/Sponge/maven")
         maven("https://plugins.gradle.org/m2/")
         maven("https://jitpack.io")
         gradlePluginPortal()
@@ -28,7 +24,6 @@ dependencyResolutionManagement {
         gradlePluginPortal()
         mavenCentral()
         mavenLocal()
-        maven("https://mvn.lumine.io/repository/maven-public/") { metadataSources { artifact() } }
         maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
         maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
         maven("https://papermc.io/repo/repository/maven-public/")
@@ -45,7 +40,7 @@ dependencyResolutionManagement {
 }
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-rootProject.name = "AstraTemplate"
+rootProject.name = "IaHook"
 
 // Shared
 include("modules:dto")
@@ -53,9 +48,3 @@ include("modules:api-remote")
 include("modules:api-local")
 // Spigot
 include("plugin")
-// Fabric
-include("fabric")
-// Velocity
-include("velocity")
-// Forge
-// include("forge")

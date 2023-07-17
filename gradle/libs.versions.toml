@@ -1,19 +1,4 @@
 [versions]
-# Plugin core
-plugin-version = "5.2.0"
-plugin-name = "AstraTemplate"
-plugin-group = "ru.astrainteractive.astratemplate"
-plugin-url = "EmpireProjekt.ru"
-plugin-description = "Template plugin for EmpireProjekt"
-plugin-authors = "Roman Makeev"
-plugin-author = "Roman Makeev"
-
-# Plugin destinations
-destination-paper = "D:\\Minecraft Servers\\Servers\\esmp-configuration\\smp\\plugins"
-destination-fabric = "C:\\Users\\Roman\\Desktop\\server\\mods"
-destination-forge = "C:\\Users\\Roman\\Desktop\\Forge\\mods"
-destination-velocity = "D:\\Minecraft Servers\\Servers\\esmp-configuration\\velocity\\plugins"
-
 # Kotlin
 kotlin-version = "1.8.10"
 kotlin-coroutines = "1.6.3"

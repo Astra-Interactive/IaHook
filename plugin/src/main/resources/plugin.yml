@@ -16,12 +16,12 @@ commands:
   rickandmorty:
   atempreload:
     description: Reload plugin
-    permission: astra_template.reload
+    permission: iahook.reload
     permission-message: You do not have permission!
     usage: /<command>
   adamage:
     description: Damage player
-    permission: astra_template.damage
+    permission: iahook.damage
     permission-message: You do not have permission!
     usage: /<command> <player> amount
   atempgui:
