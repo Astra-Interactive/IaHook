@@ -22,7 +22,7 @@ class IaHook : JavaPlugin() {
         RootModuleImpl()
     }
     private val rootModule by rootModuleReloadable
-    private val eventManager: EventManager by rootModule.eventHandlerModule
+    private val eventManager: EventManager by rootModule.eventManager
     private val commandManager by rootModule.commandManager
     private val jLogger by rootModule.logger
 
@@ -57,7 +57,7 @@ class IaHook : JavaPlugin() {
      */
     fun reloadPlugin() {
         rootModule.filesModule.configFile.value.reload()
-        rootModule.configurationModule.reload()
-        rootModule.translationModule.reload()
+        rootModule.configuration.reload()
+        rootModule.translation.reload()
     }
 }

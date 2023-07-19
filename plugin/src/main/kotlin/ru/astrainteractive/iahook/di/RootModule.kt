@@ -19,9 +19,9 @@ interface RootModule : Module {
     val logger: Dependency<Logger>
     val bukkitDispatchers: Dependency<BukkitDispatchers>
     val pluginScope: Dependency<AsyncComponent>
-    val configurationModule: Reloadable<MainConfiguration>
-    val translationModule: Reloadable<Translation>
-    val eventHandlerModule: Dependency<EventManager>
+    val configuration: Reloadable<MainConfiguration>
+    val translation: Reloadable<Translation>
+    val eventManager: Dependency<EventManager>
     val commandManager: Dependency<CommandManager>
 
     val commandManagerModule: CommandManagerModule

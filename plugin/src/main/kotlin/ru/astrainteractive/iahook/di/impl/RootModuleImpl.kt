@@ -45,17 +45,17 @@ internal class RootModuleImpl : RootModule {
         FilesModuleImpl(this)
     }
 
-    override val configurationModule = Reloadable {
+    override val configuration = Reloadable {
         val configFile by filesModule.configFile
         ConfigLoader.toClassOrDefault(configFile.configFile, ::MainConfiguration)
     }
 
-    override val translationModule = Reloadable {
+    override val translation = Reloadable {
         val plugin by plugin
         Translation(plugin)
     }
 
-    override val eventHandlerModule = Single {
+    override val eventManager = Single {
         EventManager(eventModule)
     }
 

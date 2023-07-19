@@ -9,7 +9,7 @@ internal class CommandManagerModuleImpl(
 ) : CommandManagerModule {
 
     override val plugin by rootModule.plugin
-    override val translation by rootModule.translationModule
+    override val translation by rootModule.translation
     override val pluginScope by rootModule.pluginScope
     override val dispatchers by rootModule.bukkitDispatchers
 }
