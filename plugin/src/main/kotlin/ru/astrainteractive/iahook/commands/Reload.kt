@@ -5,7 +5,7 @@ import ru.astrainteractive.astralibs.commands.registerCommand
 import ru.astrainteractive.astralibs.getValue
 import ru.astrainteractive.iahook.IaHook
 import ru.astrainteractive.iahook.commands.di.CommandManagerModule
-import ru.astrainteractive.iahook.plugin.Permissions
+import ru.astrainteractive.iahook.plugin.PluginPermissions
 
 /**
  * Reload command handler
@@ -16,11 +16,11 @@ fun CommandManager.reload(
 ) = plugin.registerCommand("atempreload") {
     val translation by module.translationModule
 
-    if (!Permissions.Reload.hasPermission(sender)) {
-        sender.sendMessage(translation.noPermission)
+    if (!PluginPermissions.Reload.hasPermission(sender)) {
+        sender.sendMessage(translation.general.noPermission)
         return@registerCommand
     }
-    sender.sendMessage(translation.reload)
+    sender.sendMessage(translation.general.reload)
     plugin.reloadPlugin()
-    sender.sendMessage(translation.reloadComplete)
+    sender.sendMessage(translation.general.reloadComplete)
 }

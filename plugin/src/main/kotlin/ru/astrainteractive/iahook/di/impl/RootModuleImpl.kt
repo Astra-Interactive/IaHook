@@ -10,7 +10,6 @@ import ru.astrainteractive.astralibs.configloader.ConfigLoader
 import ru.astrainteractive.astralibs.getValue
 import ru.astrainteractive.iahook.di.PluginModule
 import ru.astrainteractive.iahook.di.RootModule
-import ru.astrainteractive.iahook.di.factories.CustomConfigurationFactory
 import ru.astrainteractive.iahook.events.EventManager
 import ru.astrainteractive.iahook.plugin.MainConfiguration
 import ru.astrainteractive.iahook.plugin.Translation
@@ -34,9 +33,5 @@ internal object RootModuleImpl : RootModule {
 
     override val commandManager = Single {
         CommandManager(CommandManagerModuleImpl)
-    }
-
-    override val customConfiguration = Reloadable {
-        CustomConfigurationFactory.build()
     }
 }

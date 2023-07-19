@@ -37,8 +37,6 @@ class IaHook : JavaPlugin() {
         jLogger.warning("Warn message from logger", "IaHook")
         jLogger.error("Error message", "IaHook")
 
-        val customConfiguration by RootModuleImpl.customConfiguration
-        jLogger.info("Custom configuration version: ${customConfiguration.pluginVersion.value}", "IaHook")
         GlobalEventListener.onEnable(this)
         GlobalInventoryClickEvent.onEnable(this)
         commandManager

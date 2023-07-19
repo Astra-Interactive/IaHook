@@ -5,7 +5,6 @@ import ru.astrainteractive.astralibs.events.EventListener
 import ru.astrainteractive.iahook.events.di.EventModule
 import ru.astrainteractive.iahook.events.events.BetterAnotherEvent
 import ru.astrainteractive.iahook.events.events.MultipleEventsDSL
-import ru.astrainteractive.iahook.events.events.TemplateEvent
 
 /**
  * Handler for all your events
@@ -14,7 +13,6 @@ class EventManager(
     private val module: EventModule
 ) : EventListener {
     private val events = buildList {
-        TemplateEvent(module).also(::add)
         BetterAnotherEvent().also(::add)
     }
 
