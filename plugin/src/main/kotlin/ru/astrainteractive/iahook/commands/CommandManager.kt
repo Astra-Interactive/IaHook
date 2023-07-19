@@ -6,9 +6,7 @@ import ru.astrainteractive.iahook.commands.reload
  * Command handler for your plugin
  * It's better to create different executors for different commands
  */
-class CommandManager(module: CommandManagerModule) {
-    private val plugin by module.plugin
-
+class CommandManager(module: CommandManagerModule) : CommandManagerModule by module {
     /**
      * Here you should declare commands for your plugin
      *
@@ -17,6 +15,6 @@ class CommandManager(module: CommandManagerModule) {
      * etemp has TabCompleter
      */
     init {
-        reload(plugin, module)
+        reload()
     }
 }

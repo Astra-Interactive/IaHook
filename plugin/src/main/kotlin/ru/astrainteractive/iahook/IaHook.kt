@@ -5,13 +5,11 @@ package ru.astrainteractive.iahook
 import org.bukkit.event.HandlerList
 import org.bukkit.plugin.java.JavaPlugin
 import org.jetbrains.kotlin.tooling.core.UnsafeApi
+import ru.astrainteractive.astralibs.Reloadable
 import ru.astrainteractive.astralibs.async.PluginScope
 import ru.astrainteractive.astralibs.events.GlobalEventListener
 import ru.astrainteractive.astralibs.getValue
 import ru.astrainteractive.astralibs.menu.event.GlobalInventoryClickEvent
-import ru.astrainteractive.iahook.di.RootModule
-import ru.astrainteractive.iahook.di.impl.FilesModuleImpl
-import ru.astrainteractive.iahook.di.impl.PluginModuleImpl
 import ru.astrainteractive.iahook.di.impl.RootModuleImpl
 import ru.astrainteractive.iahook.events.EventManager
 
@@ -20,19 +18,19 @@ import ru.astrainteractive.iahook.events.EventManager
  */
 
 class IaHook : JavaPlugin() {
-
-    init {
-        PluginModuleImpl.plugin.initialize(this)
+    private val rootModuleReloadable = Reloadable {
+        RootModuleImpl()
     }
-    private val rootModule: RootModule by RootModuleImpl
+    private val rootModule by rootModuleReloadable
     private val eventManager: EventManager by rootModule.eventHandlerModule
     private val commandManager by rootModule.commandManager
-    private val jLogger by rootModule.pluginModule.logger
+    private val jLogger by rootModule.logger
 
     /**
      * This method called when server starts or PlugMan load plugin.
      */
     override fun onEnable() {
+        rootModule.plugin.initialize(this)
         jLogger.info("Logger enabled", "IaHook")
         jLogger.warning("Warn message from logger", "IaHook")
         jLogger.error("Error message", "IaHook")
@@ -58,8 +56,8 @@ class IaHook : JavaPlugin() {
      * As it says, function for plugin reload
      */
     fun reloadPlugin() {
-        FilesModuleImpl.configFile.value.reload()
-        RootModuleImpl.configurationModule.reload()
-        RootModuleImpl.translationModule.reload()
+        rootModule.filesModule.configFile.value.reload()
+        rootModule.configurationModule.reload()
+        rootModule.translationModule.reload()
     }
 }
