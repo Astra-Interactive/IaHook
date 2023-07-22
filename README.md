@@ -13,3 +13,10 @@ ItemsAdder hook for EmpireSMP
 damageEntitiesItemIds:
   - "master_fighting_wand"
 ```
+
+Логгирование
+
+```yaml
+logging:
+  logDamageEntities: true
+```

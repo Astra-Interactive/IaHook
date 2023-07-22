@@ -3,6 +3,7 @@
 package ru.astrainteractive.iahook.di.impl
 
 import CommandManager
+import kotlinx.serialization.encodeToString
 import org.jetbrains.kotlin.tooling.core.UnsafeApi
 import ru.astrainteractive.astralibs.Lateinit
 import ru.astrainteractive.astralibs.Reloadable
@@ -47,7 +48,9 @@ internal class RootModuleImpl : RootModule {
 
     override val configuration = Reloadable {
         val configFile by filesModule.configFile
-        ConfigLoader.toClassOrDefault(configFile.configFile, ::MainConfiguration)
+        ConfigLoader.toClassOrDefault(configFile.configFile, ::MainConfiguration).also {
+            configFile.configFile.writeText(ConfigLoader.defaultYaml.encodeToString(it))
+        }
     }
 
     override val translation = Reloadable {
