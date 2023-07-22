@@ -19,6 +19,7 @@ import ru.astrainteractive.iahook.di.RootModule
 import ru.astrainteractive.iahook.events.EventManager
 import ru.astrainteractive.iahook.plugin.MainConfiguration
 import ru.astrainteractive.iahook.plugin.Translation
+import ru.astrainteractive.iahook.util.PassiveManaRestore
 
 internal class RootModuleImpl : RootModule {
     // core
@@ -64,5 +65,12 @@ internal class RootModuleImpl : RootModule {
 
     override val commandManager = Single {
         CommandManager(commandManagerModule)
+    }
+
+    override val passiveManaRestoreJob: Reloadable<PassiveManaRestore> = Reloadable {
+        PassiveManaRestore(
+            configuration = configuration.value.manaConfiguration,
+            dispatchers = bukkitDispatchers.value,
+        )
     }
 }

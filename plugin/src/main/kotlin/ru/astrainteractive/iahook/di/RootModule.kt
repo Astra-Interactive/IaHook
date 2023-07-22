@@ -13,6 +13,7 @@ import ru.astrainteractive.iahook.events.EventManager
 import ru.astrainteractive.iahook.events.di.EventModule
 import ru.astrainteractive.iahook.plugin.MainConfiguration
 import ru.astrainteractive.iahook.plugin.Translation
+import ru.astrainteractive.iahook.util.PassiveManaRestore
 
 interface RootModule : Module {
     val plugin: Dependency<IaHook>
@@ -23,6 +24,8 @@ interface RootModule : Module {
     val translation: Reloadable<Translation>
     val eventManager: Dependency<EventManager>
     val commandManager: Dependency<CommandManager>
+
+    val passiveManaRestoreJob: Reloadable<PassiveManaRestore>
 
     val commandManagerModule: CommandManagerModule
     val eventModule: EventModule

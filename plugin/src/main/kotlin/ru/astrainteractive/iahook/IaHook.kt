@@ -39,6 +39,7 @@ class IaHook : JavaPlugin() {
         GlobalInventoryClickEvent.onEnable(this)
         commandManager
         eventManager.onEnable(this)
+        rootModule.passiveManaRestoreJob.value
     }
 
     /**
@@ -46,6 +47,7 @@ class IaHook : JavaPlugin() {
      */
     override fun onDisable() {
         eventManager.onDisable()
+        rootModule.passiveManaRestoreJob.value.close()
         HandlerList.unregisterAll(this)
         GlobalEventListener.onDisable()
         GlobalInventoryClickEvent.onDisable()
@@ -56,6 +58,8 @@ class IaHook : JavaPlugin() {
      * As it says, function for plugin reload
      */
     fun reloadPlugin() {
+        rootModule.passiveManaRestoreJob.value.close()
+        rootModule.passiveManaRestoreJob.reload()
         rootModule.filesModule.configFile.value.reload()
         rootModule.configuration.reload()
         rootModule.translation.reload()

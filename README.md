@@ -20,3 +20,16 @@ damageEntitiesItemIds:
 logging:
   logDamageEntities: true
 ```
+
+ManaConfiguration
+```yaml
+mana_configuration:
+  id: "NAMESPACE:mana"
+  min: 0.0
+  max: 20.0
+  passive_mana_restore:
+    "saphire_chestplate":
+      id: "saphire_chestplate"
+      every_millis: 300
+      mana: 1.0
+```
