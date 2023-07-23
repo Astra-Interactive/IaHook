@@ -72,13 +72,14 @@ class MultipleEventsDSL(module: EventModule) : EventModule by module {
                     20.0
                 ) / 25
                 ) * (1 - min(resistance, 5.0) / 5)
+        e.damage = 0.0
+        val newHealth = (entity.health - result).coerceAtLeast(0.0)
         if (configuration.logging.logDamageEntities) {
             logger.info(
                 "MultipleEventsDSL: EntityDamageEvent",
-                "armor: $armor; toughness: $toughness; protection: $protection; resistance: $resistance; resultDamage: $result"
+                "armor: $armor; toughness: $toughness; protection: $protection; resistance: $resistance; resultDamage: $result; newHealth: $newHealth"
             )
         }
-        e.damage = 0.0
-        entity.health -= result
+        entity.health = newHealth
     }
 }
