@@ -15,7 +15,8 @@ data class MainConfiguration(
 ) {
     @Serializable
     data class LoggingConfig(
-        val logDamageEntities: Boolean = true
+        val logDamageEntities: Boolean = true,
+        val manaRestoration: Boolean = true
     )
 
     @Serializable

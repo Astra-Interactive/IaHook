@@ -19,6 +19,7 @@ damageEntitiesItemIds:
 ```yaml
 logging:
   logDamageEntities: true
+  manaRestoration: true
 ```
 
 ManaConfiguration

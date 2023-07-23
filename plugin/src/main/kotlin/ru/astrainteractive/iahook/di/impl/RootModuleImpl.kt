@@ -69,8 +69,9 @@ internal class RootModuleImpl : RootModule {
 
     override val passiveManaRestoreJob: Reloadable<PassiveManaRestore> = Reloadable {
         PassiveManaRestore(
-            configuration = configuration.value.manaConfiguration,
             dispatchers = bukkitDispatchers.value,
+            configuration = configuration.value,
+            logger = logger.value,
         )
     }
 }
