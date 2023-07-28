@@ -43,8 +43,13 @@ class PassiveManaRestore(
         model: MainConfiguration.ManaConfiguration.PassiveManaRestoreModel,
         player: Player
     ) {
-        player.inventory.armorContents.firstOrNull {
-            val customItem = it?.let(CustomStack::byItemStack)
+        val allContent = listOf(
+            player.inventory.itemInMainHand,
+            player.inventory.itemInOffHand
+        ) + player.inventory.armorContents.filterNotNull()
+
+        allContent.firstOrNull {
+            val customItem = it.let(CustomStack::byItemStack)
             customItem?.id == model.id
         } ?: return
         withContext(dispatchers.BukkitMain) {
@@ -57,7 +62,10 @@ class PassiveManaRestore(
                 if (player.isOp)
                     logger.info("PassiveManaRestore-$jobId", "Player ${player.name} has OP! Mana will not be changed!")
 
-                logger.info("PassiveManaRestore-$jobId", "Player ${player.name} mana now is ${newValue}. Increased by ${model.mana}")
+                logger.info(
+                    "PassiveManaRestore-$jobId",
+                    "Player ${player.name} mana now is ${newValue}. Increased by ${model.mana}"
+                )
             }
         }
     }
