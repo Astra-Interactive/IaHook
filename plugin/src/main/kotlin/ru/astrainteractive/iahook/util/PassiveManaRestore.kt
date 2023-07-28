@@ -46,7 +46,12 @@ class PassiveManaRestore(
         val allContent = listOf(
             player.inventory.itemInMainHand,
             player.inventory.itemInOffHand
-        ) + player.inventory.armorContents.filterNotNull()
+        ).filter {
+            !it.type.name.endsWith("_HELMET", true)
+                    && !it.type.name.endsWith("_CHESTPLATE", true)
+                    && !it.type.name.endsWith("_LEGGINGS", true)
+                    && !it.type.name.endsWith("_BOOTS", true)
+        } + player.inventory.armorContents.filterNotNull()
 
         allContent.firstOrNull {
             val customItem = it.let(CustomStack::byItemStack)
