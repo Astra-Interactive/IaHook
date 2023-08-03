@@ -18,6 +18,7 @@ dependencies {
     // Spigot dependencies
     compileOnly(libs.minecraft.paper.api)
     compileOnly("com.github.LoneDev6:api-itemsadder:3.5.0b")
+    compileOnly(libs.minecraft.vaultapi)
     implementation(libs.minecraft.bstats)
     // Test
     testImplementation(platform(libs.tests.junit.bom))
@@ -26,6 +27,6 @@ dependencies {
     testImplementation(libs.minecraft.mockbukkit)
 }
 
-val localPluginsFolder = File("D:\\Minecraft Servers\\Servers\\esmp-configuration\\smp\\plugins")
+val localPluginsFolder = File("D:\\Minecraft Servers\\Servers\\esmp-configuration\\anarchy\\plugins")
 if (localPluginsFolder.exists()) setupSpigotShadow(localPluginsFolder) else setupSpigotShadow()
 setupSpigotProcessor()

@@ -20,9 +20,11 @@ damageEntitiesItemIds:
 logging:
   logDamageEntities: true
   manaRestoration: true
+  moneyPickUp: true
 ```
 
 ManaConfiguration
+
 ```yaml
 mana_configuration:
   id: "NAMESPACE:mana"
@@ -33,4 +35,16 @@ mana_configuration:
       id: "saphire_chestplate"
       every_millis: 300
       mana: 1.0
+```
+
+Money pick yp
+
+При поднятии этого предмета - он будет удален, а взамен игроку будет добавлен баланс в соответствующем размере
+
+```yaml
+money_pickup:
+  DIAMOND:
+    item: DIAMOND
+    min: 5.0
+    max: 10.0
 ```

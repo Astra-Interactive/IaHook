@@ -6,6 +6,7 @@ import ru.astrainteractive.astralibs.Module
 import ru.astrainteractive.astralibs.Reloadable
 import ru.astrainteractive.astralibs.async.AsyncComponent
 import ru.astrainteractive.astralibs.async.BukkitDispatchers
+import ru.astrainteractive.astralibs.economy.EconomyProvider
 import ru.astrainteractive.astralibs.logging.Logger
 import ru.astrainteractive.iahook.IaHook
 import ru.astrainteractive.iahook.commands.di.CommandManagerModule
@@ -24,6 +25,7 @@ interface RootModule : Module {
     val translation: Reloadable<Translation>
     val eventManager: Dependency<EventManager>
     val commandManager: Dependency<CommandManager>
+    val economyProvider: Dependency<EconomyProvider>
 
     val passiveManaRestoreJob: Reloadable<PassiveManaRestore>
 

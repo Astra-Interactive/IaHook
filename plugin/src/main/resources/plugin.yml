@@ -8,7 +8,7 @@ author: "${author}"
 website: "${url}"
 api-version: 1.18
 softdepend: [ ]
-depend: [ ]
+depend: [ ItemsAdder, Vault ]
 loadbefore: [ ]
 #libraries: [ "${libraries}" ]
 commands:

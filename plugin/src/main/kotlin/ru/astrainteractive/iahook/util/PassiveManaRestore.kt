@@ -3,18 +3,17 @@ package ru.astrainteractive.iahook.util
 import dev.lone.itemsadder.api.CustomStack
 import dev.lone.itemsadder.api.FontImages.PlayerHudsHolderWrapper
 import dev.lone.itemsadder.api.FontImages.PlayerQuantityHudWrapper
-import kotlin.random.Random
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
-import ru.astrainteractive.astralibs.Provider
 import ru.astrainteractive.astralibs.async.AsyncComponent
 import ru.astrainteractive.astralibs.async.BukkitDispatchers
 import ru.astrainteractive.astralibs.logging.Logger
 import ru.astrainteractive.iahook.plugin.MainConfiguration
+import kotlin.random.Random
 
 class PassiveManaRestore(
     private val configuration: MainConfiguration,
@@ -47,10 +46,10 @@ class PassiveManaRestore(
             player.inventory.itemInMainHand,
             player.inventory.itemInOffHand
         ).filter {
-            !it.type.name.endsWith("_HELMET", true)
-                    && !it.type.name.endsWith("_CHESTPLATE", true)
-                    && !it.type.name.endsWith("_LEGGINGS", true)
-                    && !it.type.name.endsWith("_BOOTS", true)
+            !it.type.name.endsWith("_HELMET", true) &&
+                !it.type.name.endsWith("_CHESTPLATE", true) &&
+                !it.type.name.endsWith("_LEGGINGS", true) &&
+                !it.type.name.endsWith("_BOOTS", true)
         } + player.inventory.armorContents.filterNotNull()
 
         allContent.firstOrNull {
@@ -64,12 +63,13 @@ class PassiveManaRestore(
             val newValue = (hud.floatValue + model.mana).coerceIn(manaConfiguration.min, manaConfiguration.max)
             hud.floatValue = newValue
             if (configuration.logging.manaRestoration) {
-                if (player.isOp)
+                if (player.isOp) {
                     logger.info("PassiveManaRestore-$jobId", "Player ${player.name} has OP! Mana will not be changed!")
+                }
 
                 logger.info(
                     "PassiveManaRestore-$jobId",
-                    "Player ${player.name} mana now is ${newValue}. Increased by ${model.mana}"
+                    "Player ${player.name} mana now is $newValue. Increased by ${model.mana}"
                 )
             }
         }

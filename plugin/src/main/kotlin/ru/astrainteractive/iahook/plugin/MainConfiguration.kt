@@ -11,12 +11,22 @@ data class MainConfiguration(
     val logging: LoggingConfig = LoggingConfig(),
     val damageEntitiesItemIds: List<String> = emptyList(),
     @SerialName("mana_configuration")
-    val manaConfiguration: ManaConfiguration = ManaConfiguration()
+    val manaConfiguration: ManaConfiguration = ManaConfiguration(),
+    @SerialName("money_pickup")
+    val moneyPickUp: Map<String, MoneyPickUp> = emptyMap()
 ) {
     @Serializable
     data class LoggingConfig(
         val logDamageEntities: Boolean = true,
-        val manaRestoration: Boolean = true
+        val manaRestoration: Boolean = true,
+        val moneyPickUp: Boolean = true
+    )
+
+    @Serializable
+    data class MoneyPickUp(
+        val item: String,
+        val min: Double,
+        val max: Double
     )
 
     @Serializable

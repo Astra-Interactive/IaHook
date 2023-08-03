@@ -6,6 +6,7 @@ import org.jetbrains.kotlin.tooling.core.UnsafeApi
 import ru.astrainteractive.astralibs.Single
 import ru.astrainteractive.astralibs.async.AsyncComponent
 import ru.astrainteractive.astralibs.async.BukkitDispatchers
+import ru.astrainteractive.astralibs.economy.EconomyProvider
 import ru.astrainteractive.astralibs.events.GlobalEventListener
 import ru.astrainteractive.astralibs.getValue
 import ru.astrainteractive.astralibs.logging.Logger
@@ -24,4 +25,5 @@ internal class EventModuleImpl(
     override val configuration: MainConfiguration by rootModule.configuration
     override val scope: AsyncComponent by rootModule.pluginScope
     override val dispatchers: BukkitDispatchers by rootModule.bukkitDispatchers
+    override val economyProvider: EconomyProvider by rootModule.economyProvider
 }

@@ -5,12 +5,15 @@ package ru.astrainteractive.iahook.di.impl
 import CommandManager
 import kotlinx.serialization.encodeToString
 import org.jetbrains.kotlin.tooling.core.UnsafeApi
+import ru.astrainteractive.astralibs.Dependency
 import ru.astrainteractive.astralibs.Lateinit
 import ru.astrainteractive.astralibs.Reloadable
 import ru.astrainteractive.astralibs.Single
 import ru.astrainteractive.astralibs.async.AsyncComponent
 import ru.astrainteractive.astralibs.async.DefaultBukkitDispatchers
 import ru.astrainteractive.astralibs.configloader.ConfigLoader
+import ru.astrainteractive.astralibs.economy.EconomyProvider
+import ru.astrainteractive.astralibs.economy.VaultEconomyProvider
 import ru.astrainteractive.astralibs.getValue
 import ru.astrainteractive.astralibs.logging.Logger
 import ru.astrainteractive.astralibs.utils.buildWithSpigot
@@ -65,6 +68,9 @@ internal class RootModuleImpl : RootModule {
 
     override val commandManager = Single {
         CommandManager(commandManagerModule)
+    }
+    override val economyProvider: Dependency<EconomyProvider> = Single {
+        VaultEconomyProvider()
     }
 
     override val passiveManaRestoreJob: Reloadable<PassiveManaRestore> = Reloadable {
