@@ -1,9 +1,6 @@
 package ru.astrainteractive.iahook.di
 
 import CommandManager
-import ru.astrainteractive.astralibs.Dependency
-import ru.astrainteractive.astralibs.Module
-import ru.astrainteractive.astralibs.Reloadable
 import ru.astrainteractive.astralibs.async.AsyncComponent
 import ru.astrainteractive.astralibs.async.BukkitDispatchers
 import ru.astrainteractive.astralibs.economy.EconomyProvider
@@ -15,6 +12,9 @@ import ru.astrainteractive.iahook.events.di.EventModule
 import ru.astrainteractive.iahook.plugin.MainConfiguration
 import ru.astrainteractive.iahook.plugin.Translation
 import ru.astrainteractive.iahook.util.PassiveManaRestore
+import ru.astrainteractive.klibs.kdi.Dependency
+import ru.astrainteractive.klibs.kdi.Module
+import ru.astrainteractive.klibs.kdi.Reloadable
 
 interface RootModule : Module {
     val plugin: Dependency<IaHook>

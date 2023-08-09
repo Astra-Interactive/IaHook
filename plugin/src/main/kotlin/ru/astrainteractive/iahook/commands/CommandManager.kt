@@ -1,4 +1,3 @@
-import ru.astrainteractive.astralibs.getValue
 import ru.astrainteractive.iahook.commands.di.CommandManagerModule
 import ru.astrainteractive.iahook.commands.reload
 

@@ -48,3 +48,18 @@ money_pickup:
     min: 5.0
     max: 10.0
 ```
+
+Thirst integration
+```yaml
+thirst:
+  water_bottle:
+    min: 0
+    max: 1
+  in_water:
+    min: 0
+    max: 1
+  in_rain:
+    min: 0
+    max: 1
+
+```

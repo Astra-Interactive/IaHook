@@ -2,7 +2,6 @@ package ru.astrainteractive.iahook.commands
 
 import CommandManager
 import ru.astrainteractive.astralibs.commands.registerCommand
-import ru.astrainteractive.astralibs.getValue
 import ru.astrainteractive.iahook.plugin.PluginPermissions
 
 /**

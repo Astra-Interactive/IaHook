@@ -1,8 +1,8 @@
 package ru.astrainteractive.iahook.di.impl
 
-import ru.astrainteractive.astralibs.getValue
 import ru.astrainteractive.iahook.commands.di.CommandManagerModule
 import ru.astrainteractive.iahook.di.RootModule
+import ru.astrainteractive.klibs.kdi.getValue
 
 internal class CommandManagerModuleImpl(
     rootModule: RootModule,

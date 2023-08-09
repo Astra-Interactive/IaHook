@@ -5,13 +5,14 @@ package ru.astrainteractive.iahook
 import org.bukkit.event.HandlerList
 import org.bukkit.plugin.java.JavaPlugin
 import org.jetbrains.kotlin.tooling.core.UnsafeApi
-import ru.astrainteractive.astralibs.Reloadable
 import ru.astrainteractive.astralibs.async.PluginScope
 import ru.astrainteractive.astralibs.events.GlobalEventListener
-import ru.astrainteractive.astralibs.getValue
 import ru.astrainteractive.astralibs.menu.event.GlobalInventoryClickEvent
 import ru.astrainteractive.iahook.di.impl.RootModuleImpl
 import ru.astrainteractive.iahook.events.EventManager
+import ru.astrainteractive.klibs.kdi.Provider
+import ru.astrainteractive.klibs.kdi.Reloadable
+import ru.astrainteractive.klibs.kdi.getValue
 
 /**
  * Initial class for your plugin
@@ -25,6 +26,11 @@ class IaHook : JavaPlugin() {
     private val eventManager: EventManager by rootModule.eventManager
     private val commandManager by rootModule.commandManager
     private val jLogger by rootModule.logger
+    private val withLifecycle by Provider {
+        listOf(
+            rootModule.passiveManaRestoreJob
+        )
+    }
 
     /**
      * This method called when server starts or PlugMan load plugin.
@@ -39,7 +45,7 @@ class IaHook : JavaPlugin() {
         GlobalInventoryClickEvent.onEnable(this)
         commandManager
         eventManager.onEnable(this)
-        rootModule.passiveManaRestoreJob.value
+        withLifecycle.forEach { it.value.onCreate() }
     }
 
     /**
@@ -47,7 +53,7 @@ class IaHook : JavaPlugin() {
      */
     override fun onDisable() {
         eventManager.onDisable()
-        rootModule.passiveManaRestoreJob.value.close()
+        withLifecycle.forEach { it.value.onDestroy() }
         HandlerList.unregisterAll(this)
         GlobalEventListener.onDisable()
         GlobalInventoryClickEvent.onDisable()
@@ -58,8 +64,8 @@ class IaHook : JavaPlugin() {
      * As it says, function for plugin reload
      */
     fun reloadPlugin() {
-        rootModule.passiveManaRestoreJob.value.close()
-        rootModule.passiveManaRestoreJob.reload()
+        withLifecycle.forEach { it.value.onDestroy() }
+        withLifecycle.forEach { it.reload() }
         rootModule.filesModule.configFile.value.reload()
         rootModule.configuration.reload()
         rootModule.translation.reload()

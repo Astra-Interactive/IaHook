@@ -77,7 +77,11 @@ class MultipleEventsDSL(module: EventModule) : EventModule by module {
         if (configuration.logging.logDamageEntities) {
             logger.info(
                 "MultipleEventsDSL: EntityDamageEvent",
-                "armor: $armor; toughness: $toughness; protection: $protection; resistance: $resistance; resultDamage: $result; newHealth: $newHealth"
+                "armor: $armor; toughness: $toughness;" +
+                    " protection: $protection;" +
+                    " resistance: $resistance;" +
+                    " resultDamage: $result;" +
+                    " newHealth: $newHealth"
             )
         }
         entity.health = newHealth

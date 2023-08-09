@@ -5,16 +5,11 @@ package ru.astrainteractive.iahook.di.impl
 import CommandManager
 import kotlinx.serialization.encodeToString
 import org.jetbrains.kotlin.tooling.core.UnsafeApi
-import ru.astrainteractive.astralibs.Dependency
-import ru.astrainteractive.astralibs.Lateinit
-import ru.astrainteractive.astralibs.Reloadable
-import ru.astrainteractive.astralibs.Single
 import ru.astrainteractive.astralibs.async.AsyncComponent
 import ru.astrainteractive.astralibs.async.DefaultBukkitDispatchers
 import ru.astrainteractive.astralibs.configloader.ConfigLoader
 import ru.astrainteractive.astralibs.economy.EconomyProvider
 import ru.astrainteractive.astralibs.economy.VaultEconomyProvider
-import ru.astrainteractive.astralibs.getValue
 import ru.astrainteractive.astralibs.logging.Logger
 import ru.astrainteractive.astralibs.utils.buildWithSpigot
 import ru.astrainteractive.iahook.IaHook
@@ -23,6 +18,11 @@ import ru.astrainteractive.iahook.events.EventManager
 import ru.astrainteractive.iahook.plugin.MainConfiguration
 import ru.astrainteractive.iahook.plugin.Translation
 import ru.astrainteractive.iahook.util.PassiveManaRestore
+import ru.astrainteractive.klibs.kdi.Dependency
+import ru.astrainteractive.klibs.kdi.Lateinit
+import ru.astrainteractive.klibs.kdi.Reloadable
+import ru.astrainteractive.klibs.kdi.Single
+import ru.astrainteractive.klibs.kdi.getValue
 
 internal class RootModuleImpl : RootModule {
     // core
@@ -52,8 +52,8 @@ internal class RootModuleImpl : RootModule {
 
     override val configuration = Reloadable {
         val configFile by filesModule.configFile
-        ConfigLoader.toClassOrDefault(configFile.configFile, ::MainConfiguration).also {
-            configFile.configFile.writeText(ConfigLoader.defaultYaml.encodeToString(it))
+        ConfigLoader().toClassOrDefault(configFile.configFile, ::MainConfiguration).also {
+            configFile.configFile.writeText(ConfigLoader().defaultYaml.encodeToString(it))
         }
     }
 

@@ -19,13 +19,17 @@ class PassiveManaRestore(
     private val configuration: MainConfiguration,
     private val logger: Logger,
     private val dispatchers: BukkitDispatchers,
-) : AsyncComponent() {
+) : AsyncComponent(), Lifecycle {
     private val jobId = Random.nextInt()
     private val manaConfiguration: MainConfiguration.ManaConfiguration
         get() = configuration.manaConfiguration
 
-    init {
+    override fun onCreate() {
         manaConfiguration.passiveManaRestore.values.forEach(::startModel)
+    }
+
+    override fun onDestroy() {
+        close()
     }
 
     private fun startModel(model: MainConfiguration.ManaConfiguration.PassiveManaRestoreModel) =

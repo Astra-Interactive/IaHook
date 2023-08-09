@@ -20,9 +20,16 @@ minecraft-protocollib = "4.8.0"
 minecraft-wg = "7.0.7"
 minecraft-vault = "1.7"
 minecraft-coreprotect = "21.2"
-minecraft-astralibs = "2.7.0-RC8"
+minecraft-astralibs = "2.9.0"
 minecraft-bstats = "3.0.0"
 minecraft-mockbukkit = "v1.19-SNAPSHOT"
+
+# klibs
+klibs-gradleplugin = "0.1.0"
+klibs-kstorage = "1.0.0 "
+klibs-mikro = "1.0.0"
+klibs-kdi = "1.0.1"
+
 
 # Testing
 tests-org-testing = "7.1.0"
@@ -61,9 +68,14 @@ minecraft-bukkit = ["minecraft-paper-api", "minecraft-spigot-api", "minecraft-sp
 testing-kotlin = ["kotlin-coroutines-core", "kotlin-coroutines-coreJvm", "driver-jdbc", "driver-mysql", "kotlin-serialization", "kotlin-serializationJson"]
 testing-libs = ["tests-junit-jupiter-api", "tests-org-testing", "tests-junit5", "tests-junit-jupiter"]
 kotlin = ["kotlin-coroutines-core", "kotlin-coroutines-coreJvm", "kotlin-serialization", "kotlin-serializationJson", "kotlin-serializationKaml", "kotlin-dokka-kotlinJavaPlugin", "kotlin-gradle"]
-
+klibs = ["klibs-kdi", "klibs-kstorage", "klibs-mikro-core", "klibs-mikro-platform"]
 
 [libraries]
+# klibs
+klibs-kdi = { module = "ru.astrainteractive.klibs:kdi", version.ref = "klibs-kdi" }
+klibs-kstorage = { module = "ru.astrainteractive.klibs:kstorage", version.ref = "klibs-kstorage" }
+klibs-mikro-core = { module = "ru.astrainteractive.klibs:mikro-core", version.ref = "klibs-mikro" }
+klibs-mikro-platform = { module = "ru.astrainteractive.klibs:mikro-platform", version.ref = "klibs-mikro" }
 # Linter
 lint-detekt-gradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "lint-detekt" }
 lint-detekt-ruleset-compiler = { module = "com.braisgabin.detekt:kotlin-compiler-wrapper", version.ref = "lint-detekt-ruleset-compiler" }
@@ -113,7 +125,6 @@ minecraft-mockbukkit = { module = "com.github.MockBukkit:MockBukkit", version.re
 
 # AstraLibs
 minecraft-astralibs-ktxcore = { module = "ru.astrainteractive.astralibs:ktx-core", version.ref = "minecraft-astralibs" }
-minecraft-astralibs-di = { module = "ru.astrainteractive.astralibs:di", version.ref = "minecraft-astralibs" }
 minecraft-astralibs-orm = { module = "ru.astrainteractive.astralibs:orm", version.ref = "minecraft-astralibs" }
 minecraft-astralibs-spigot-core = { module = "ru.astrainteractive.astralibs:spigot-core", version.ref = "minecraft-astralibs" }
 minecraft-astralibs-spigot-gui = { module = "ru.astrainteractive.astralibs:spigot-gui", version.ref = "minecraft-astralibs" }
