@@ -43,13 +43,16 @@ Money pick yp
 
 ```yaml
 money_pickup:
-  DIAMOND:
-    item: DIAMOND
-    min: 5.0
-    max: 10.0
+  sound: minecraft:block.beehive.drip
+  items:
+    DIAMOND:
+      item: DIAMOND
+      min: 5.0
+      max: 10.0
 ```
 
 Thirst integration
+
 ```yaml
 thirst:
   water_bottle:

@@ -13,20 +13,26 @@ data class MainConfiguration(
     @SerialName("mana_configuration")
     val manaConfiguration: ManaConfiguration = ManaConfiguration(),
     @SerialName("money_pickup")
-    val moneyPickUp: Map<String, MoneyPickUp> = emptyMap()
+    val moneyPickUp: MoneyPickUp = MoneyPickUp()
 ) {
+    @Serializable
+    data class MoneyPickUp(
+        val items: Map<String, MoneyPickUpItem> = emptyMap(),
+        val sound: String = "BELL"
+    ) {
+        @Serializable
+        data class MoneyPickUpItem(
+            val item: String,
+            val min: Double,
+            val max: Double
+        )
+    }
+
     @Serializable
     data class LoggingConfig(
         val logDamageEntities: Boolean = true,
         val manaRestoration: Boolean = true,
         val moneyPickUp: Boolean = true
-    )
-
-    @Serializable
-    data class MoneyPickUp(
-        val item: String,
-        val min: Double,
-        val max: Double
     )
 
     @Serializable

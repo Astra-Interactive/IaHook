@@ -37,6 +37,12 @@ class Translation(plugin: Plugin) : BaseTranslation() {
             "general.no_permission",
             "${ERROR_COLOR}У вас нет прав!"
         )
+        private val moneyReceived = translationValue(
+            "general.received_money",
+            "$SUCCESS_COLOR+ %.2f монет"
+        )
+
+        fun moneyReceived(amount: Number) = moneyReceived.format(amount.toDouble())
     }
 
     companion object {
