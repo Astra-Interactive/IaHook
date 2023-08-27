@@ -50,11 +50,15 @@ internal class RootModuleImpl : RootModule {
         FilesModuleImpl(this)
     }
 
-    override val configuration = Reloadable {
+    override val configuration: Reloadable<MainConfiguration> = Reloadable {
         val configFile by filesModule.configFile
-        ConfigLoader().toClassOrDefault(configFile.configFile, ::MainConfiguration).also {
+        runCatching {
+            ConfigLoader().unsafeParse<MainConfiguration>(configFile.configFile)
+        }.onFailure {
+            it.printStackTrace()
+        }.onSuccess {
             configFile.configFile.writeText(ConfigLoader().defaultYaml.encodeToString(it))
-        }
+        }.getOrNull() ?: MainConfiguration()
     }
 
     override val translation = Reloadable {
