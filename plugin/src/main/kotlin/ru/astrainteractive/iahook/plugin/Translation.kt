@@ -42,7 +42,7 @@ class Translation(plugin: Plugin) : BaseTranslation() {
             "$SUCCESS_COLOR+ %.2f монет"
         )
 
-        fun moneyReceived(amount: Number) = moneyReceived.format(amount.toDouble())
+        fun moneyReceived(amount: Number) = moneyReceived.format(amount.toInt())
     }
 
     companion object {

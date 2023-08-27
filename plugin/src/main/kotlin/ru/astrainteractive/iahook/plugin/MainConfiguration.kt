@@ -23,8 +23,8 @@ data class MainConfiguration(
         @Serializable
         data class MoneyPickUpItem(
             val item: String,
-            val min: Double,
-            val max: Double
+            val min: Int,
+            val max: Int
         )
     }
 

@@ -1,6 +1,9 @@
 # IAHook
 
 ItemsAdder hook for EmpireSMP
+## Commands
+- `iahookdisable` - reload
+- `iahookreload` - disable
 
 ## Hooks
 

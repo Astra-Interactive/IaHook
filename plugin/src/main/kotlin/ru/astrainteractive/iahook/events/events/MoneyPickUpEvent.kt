@@ -22,8 +22,8 @@ class MoneyPickUpEvent(module: EventModule) : EventModule by module {
 
         e.item.remove()
         e.isCancelled = true
-        val money = Random.nextDouble(data.min, data.max) * amount
-        val result = economyProvider.addMoney(player.uniqueId, money)
+        val money = Random.nextInt(data.min, data.max) * amount
+        val result = economyProvider.addMoney(player.uniqueId, money.toDouble())
         translation.general.moneyReceived(money).let { message ->
             if (message.isEmpty()) return@let
             player.sendMessage(message)

@@ -7,7 +7,7 @@ import ru.astrainteractive.iahook.plugin.PluginPermissions
 /**
  * Reload command handler
  */
-fun CommandManager.reload() = plugin.registerCommand("atempreload") {
+fun CommandManager.reload() = plugin.registerCommand("iahookreload") {
     if (!PluginPermissions.Reload.hasPermission(sender)) {
         sender.sendMessage(translation.general.noPermission)
         return@registerCommand
@@ -15,4 +15,12 @@ fun CommandManager.reload() = plugin.registerCommand("atempreload") {
     sender.sendMessage(translation.general.reload)
     plugin.reloadPlugin()
     sender.sendMessage(translation.general.reloadComplete)
+}
+
+fun CommandManager.disable() = plugin.registerCommand("iahookdisable") {
+    if (!PluginPermissions.Reload.hasPermission(sender)) {
+        sender.sendMessage(translation.general.noPermission)
+        return@registerCommand
+    }
+    plugin.onDisable()
 }

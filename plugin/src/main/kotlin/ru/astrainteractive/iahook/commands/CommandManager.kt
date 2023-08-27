@@ -1,4 +1,5 @@
 import ru.astrainteractive.iahook.commands.di.CommandManagerModule
+import ru.astrainteractive.iahook.commands.disable
 import ru.astrainteractive.iahook.commands.reload
 
 /**
@@ -15,5 +16,6 @@ class CommandManager(module: CommandManagerModule) : CommandManagerModule by mod
      */
     init {
         reload()
+        disable()
     }
 }
