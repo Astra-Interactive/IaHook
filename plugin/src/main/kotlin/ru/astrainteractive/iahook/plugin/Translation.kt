@@ -39,7 +39,7 @@ class Translation(plugin: Plugin) : BaseTranslation() {
         )
         private val moneyReceived = translationValue(
             "general.received_money",
-            "$SUCCESS_COLOR+ %.2f монет"
+            "$SUCCESS_COLOR+ %d монет"
         )
 
         fun moneyReceived(amount: Number) = moneyReceived.format(amount.toInt())

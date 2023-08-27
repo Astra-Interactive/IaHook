@@ -66,6 +66,7 @@ class IaHook : JavaPlugin() {
     fun reloadPlugin() {
         withLifecycle.forEach { it.value.onDestroy() }
         withLifecycle.forEach { it.reload() }
+        withLifecycle.forEach { it.value.onCreate() }
         rootModule.filesModule.configFile.value.reload()
         rootModule.configuration.reload()
         rootModule.translation.reload()
