@@ -46,6 +46,7 @@ class IaHook : JavaPlugin() {
         commandManager
         eventManager.onEnable(this)
         withLifecycle.forEach { it.value.onCreate() }
+
     }
 
     /**
